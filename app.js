@@ -8,6 +8,7 @@ const xss = require('xss-clean');
 const hpp = require('hpp');
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
+const compression = require('compression');
 
 const AppError = require('./utils/appError');
 const globalErrorHandler = require('./controllers/errorController');
@@ -30,7 +31,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(helmet());
 app.use(
   cors({
-    origin: 'http://127.0.0.1:3000',
+    origin: '/',
     credentials: true,
   }),
 );
@@ -124,6 +125,8 @@ app.use(
     ],
   }),
 );
+
+app.use(compression());
 
 // Test middleware
 app.use((req, res, next) => {
