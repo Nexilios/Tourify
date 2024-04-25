@@ -31,10 +31,12 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(helmet());
 app.use(
   cors({
-    origin: '/',
+    origin: 'https://tourify-rtvk.onrender.com',
     credentials: true,
   }),
 );
+
+app.options('*', cors());
 
 const scriptSrcUrls = [
   'https://unpkg.com/',
