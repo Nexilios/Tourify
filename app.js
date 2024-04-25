@@ -30,13 +30,13 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Set security HTTP headers
 app.use(helmet());
-app.use(
-  cors({
-    origin: 'https://tourify-rtvk.onrender.com',
-    credentials: true,
-  }),
-);
-
+// app.use(
+//   cors({
+//     origin: 'https://tourify-rtvk.onrender.com',
+//     credentials: true,
+//   }),
+// );
+app.use(cors());
 app.options('*', cors());
 
 const scriptSrcUrls = [
